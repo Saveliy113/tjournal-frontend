@@ -14,9 +14,12 @@
     "@types/node": "18.15.13",
     "@types/react": "18.0.37",
     "@types/react-dom": "18.0.11",
+    "clsx": "^1.2.1",
+    "macro-css": "^1.0.5",
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.62.0",
     "typescript": "5.0.4"
   }
 }
