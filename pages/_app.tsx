@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </MuiThemeProvider>
   );
 }

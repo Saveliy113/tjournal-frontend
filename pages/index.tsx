@@ -18,6 +18,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <div>
+        <div className="leftSide"></div>
+        <div className="content"></div>
+        <div className="rightSide"></div>
+      </div>
     </div>
   );
 }
