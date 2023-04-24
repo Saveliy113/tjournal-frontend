@@ -1,11 +1,14 @@
 .root {
+  position: fixed;
+  width: 100%;
   height: 60px;
-  padding: 0 20px;
+  padding: 0 35px 0 20px;
   margin-bottom: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #fff4e2 !important;
+  z-index: 1;
 }
 
 .logo {
@@ -14,12 +17,14 @@
 }
 
 .createButton {
-  width: 40px !important;
-  height: 40px !important;
   min-width: 40px !important;
+  text-transform: inherit !important;
+  font-size: 16px !important;
+  letter-spacing: 0 !important;
 }
 
 .searchBlock {
+  width: 310px;
   position: relative;
   margin-right: 15px;
   svg {
@@ -30,7 +35,7 @@
   }
 
   input {
-    width: 240px;
+    width: 100%;
     height: 38px;
     border: none;
     border-radius: 10px;

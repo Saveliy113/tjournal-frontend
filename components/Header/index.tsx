@@ -12,6 +12,7 @@ import {
   SmsOutlined as MessageIcon,
   Menu as MenuIcon,
   NotificationsNoneOutlined as NotificationIcon,
+  ExpandMoreOutlined as ArrowDown,
 } from '@material-ui/icons';
 
 //STYLES
@@ -39,7 +40,7 @@ export const Header: React.FC = () => {
         </div>
 
         <Button variant="contained" className={styles.createButton}>
-          <CreateIcon />
+          Новая запись
         </Button>
       </div>
 
@@ -51,10 +52,11 @@ export const Header: React.FC = () => {
           <NotificationIcon />
         </IconButton>
         <Avatar
-          className="ml-15"
+          className="ml-15 mr-10"
           alt="Remy Sharp"
           src="https://avatars.githubusercontent.com/u/114129917?v=4"
         />
+        <ArrowDown />
       </div>
     </Paper>
   );
