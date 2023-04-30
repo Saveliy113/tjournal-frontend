@@ -1,0 +1,29 @@
+.comments {
+  max-width: 300px;
+  position: fixed;
+  top: 70px;
+  right: 15px;
+}
+
+.commentsTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.commentItem {
+  margin-bottom: 20px;
+}
+
+.commentAuthor {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.postTitle {
+  margin-top: 15px;
+  font-weight: 600;
+}

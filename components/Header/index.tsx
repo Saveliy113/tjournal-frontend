@@ -51,11 +51,13 @@ export const Header: React.FC = () => {
         <IconButton>
           <NotificationIcon />
         </IconButton>
-        <Avatar
-          className="ml-15 mr-10"
-          alt="Remy Sharp"
-          src="https://avatars.githubusercontent.com/u/114129917?v=4"
-        />
+        <Link href="/profile/1">
+          <Avatar
+            className="ml-15 mr-10"
+            alt="Remy Sharp"
+            src="https://avatars.githubusercontent.com/u/114129917?v=4"
+          />
+        </Link>
         <ArrowDown />
       </div>
     </Paper>
