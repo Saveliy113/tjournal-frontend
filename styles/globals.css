@@ -102,5 +102,8 @@ a {
 }
 
 .wrapper {
-  padding-top: 75px;
+  display: flex;
+  padding: 0 30px;
+  padding-top: 80px;
+
 }

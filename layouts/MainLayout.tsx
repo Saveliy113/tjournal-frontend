@@ -44,9 +44,11 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
         <div className="leftSide">
           <LeftMenu />
         </div>
+
         <div className={clsx('content', { 'content--full': contentFullWidth })}>
           {children}
         </div>
+
         {!hideComments && (
           <div className="rightSide">
             <SideComments />
