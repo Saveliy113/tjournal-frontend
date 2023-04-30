@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
         <Link href="/profile/1">
           <Avatar
             className="ml-15 mr-10"
-            alt="Remy Sharp"
+            alt="Saveliy Dmitriyev"
             src="https://avatars.githubusercontent.com/u/114129917?v=4"
           />
         </Link>
