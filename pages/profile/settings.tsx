@@ -16,7 +16,7 @@ export default function Settings() {
         <Divider className="mt-20 mb-30" />
         <form>
           <TextField
-            className="mb-20"
+            className="mb-30"
             size="small"
             label="Никнейм"
             variant="outlined"
