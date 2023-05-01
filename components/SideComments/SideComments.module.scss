@@ -1,7 +1,7 @@
 .comments {
   max-width: 300px;
-  position: fixed;
-  top: 70px;
+  position: sticky;
+  top: 80px;
   right: 15px;
 }
 
@@ -10,6 +10,10 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+}
+
+.commentsTitle h2 {
+  margin: 0;
 }
 
 .commentItem {

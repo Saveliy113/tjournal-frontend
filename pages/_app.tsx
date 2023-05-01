@@ -5,7 +5,7 @@ import { CssBaseline } from '@material-ui/core';
 //CSS
 import { theme } from '../theme';
 import 'macro-css';
-import '../styles/globals.css';
+import '../styles/globals.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

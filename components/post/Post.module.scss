@@ -17,3 +17,18 @@
   margin: 0;
   list-style: none;
 }
+
+.image_container {
+  width: 100%;
+
+  // > div {
+  //   position: unset !important;
+  // }
+
+  .image {
+    position: relative !important;
+    object-fit: contain;
+    width: 100% !important;
+    height: unset !important;
+  }
+}

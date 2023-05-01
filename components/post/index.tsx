@@ -25,12 +25,14 @@ export const Post: React.FC = () => {
         Пока одни не могли соотнести размеры животного и окружения, другие
         начали создавать апокалиптические сюжеты с котом в главной роли.
       </Typography>
-      <Image
-        alt="post-image"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtTEgAxY8ynbyFFUxVhg_xmnTKQp7oKHgp6IZd9gv4yIQkMje2UHBGq-S3wX63zbqV-vw&usqp=CAU"
-        height={400}
-        width={600}
-      />
+      <div className={styles.image_container}>
+        <Image
+          className={styles.image}
+          alt="post-image"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtTEgAxY8ynbyFFUxVhg_xmnTKQp7oKHgp6IZd9gv4yIQkMje2UHBGq-S3wX63zbqV-vw&usqp=CAU"
+          fill
+        />
+      </div>
 
       <ul className={styles.actions}>
         <li>
