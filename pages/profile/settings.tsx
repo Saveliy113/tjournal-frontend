@@ -30,6 +30,13 @@ export default function Settings() {
             fullWidth
             required
           />
+          <TextField
+            size="small"
+            label="Пароль"
+            variant="outlined"
+            fullWidth
+            required
+          />
           <Divider className="mt-30 mb-20" />
           <Button color="primary" variant="contained">
             Сохранить изменения
