@@ -24,6 +24,7 @@ export default function Settings() {
             required
           />
           <TextField
+            className="mb-30"
             size="small"
             label="Эл.почта"
             variant="outlined"

@@ -16,12 +16,11 @@ import {
   TableRow,
 } from '@material-ui/core';
 import { MainLayout } from '@/layouts/MainLayout';
-
-
+import { FollowButton } from '@/components/FollowButton';
 
 export default function Rating() {
   return (
-    <MainLayout hideComments>
+    <MainLayout>
       <Paper className="pl-20 pt-20 pr-20 mb-20" elevation={0}>
         <Typography
           variant="h5"
@@ -29,7 +28,7 @@ export default function Rating() {
         >
           Рейтинг сообществ и блогов
         </Typography>
-        <Typography>
+        <Typography style={{ fontSize: 15 }}>
           Десять лучших авторов и комментаторов, а также администраторы первых
           десяти сообществ из рейтинга по итогам месяца бесплатно получают
           Plus-аккаунт на месяц.
@@ -62,7 +61,7 @@ export default function Rating() {
               </TableCell>
               <TableCell align="right">540</TableCell>
               <TableCell align="right">
-                
+                <FollowButton />
               </TableCell>
             </TableRow>
           </TableBody>
