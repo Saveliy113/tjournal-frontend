@@ -1,0 +1,33 @@
+.paper {
+  padding: 30px 0;
+  margin-top: -20px;
+  border-radius: 0 !important;
+
+  p {
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+}
+
+.title {
+  font-size: 36px !important;
+  font-weight: 500 !important;
+  margin-bottom: 20px !important;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  b {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #2ea83a;
+  }
+}

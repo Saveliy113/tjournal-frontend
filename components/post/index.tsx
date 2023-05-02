@@ -1,25 +1,23 @@
-//COMPONENTS
-import { Paper, Typography, IconButton } from '@material-ui/core';
-import Image from 'next/image';
+//REACT
+import React from 'react';
 
-//ICONS
-import {
-  ModeCommentOutlined as CommentsIcon,
-  RepeatOutlined as RepostIcon,
-  BookmarkBorderOutlined as FavoriteIcon,
-  ShareOutlined as ShareIcon,
-} from '@material-ui/icons';
+//COMPONENTS
+import { PostActions } from '../PostActions';
+import { Paper, Typography } from '@material-ui/core';
+import Image from 'next/image';
+import Link from 'next/link';
 
 //CSS
 import styles from './Post.module.scss';
-import React from 'react';
 
 export const Post: React.FC = () => {
   return (
     <Paper elevation={0} className="p-20" classes={{ root: styles.paper }}>
       <Typography variant="h5" className={styles.title}>
-        Кот прилег отдохнуть в английском парке миниатюр - и стал героем шуток и
-        фотожаб о "гигантском пушистом захватчике
+        <Link href="/news/test-123">
+          Кот прилег отдохнуть в английском парке миниатюр - и стал героем шуток
+          и фотожаб о "гигантском пушистом захватчике
+        </Link>
       </Typography>
       <Typography className="mt-10 mb-15">
         Пока одни не могли соотнести размеры животного и окружения, другие
@@ -33,29 +31,7 @@ export const Post: React.FC = () => {
           fill
         />
       </div>
-
-      <ul className={styles.actions}>
-        <li>
-          <IconButton>
-            <CommentsIcon />
-          </IconButton>
-        </li>
-        <li>
-          <IconButton>
-            <RepostIcon />
-          </IconButton>
-        </li>
-        <li>
-          <IconButton>
-            <FavoriteIcon />
-          </IconButton>
-        </li>
-        <li>
-          <IconButton>
-            <ShareIcon />
-          </IconButton>
-        </li>
-      </ul>
+      <PostActions />
     </Paper>
   );
 };
