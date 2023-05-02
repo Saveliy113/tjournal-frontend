@@ -1,0 +1,41 @@
+.comment {
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  b {
+    font-size: 16px;
+  }
+
+  span {
+    font-size: 12px;
+    opacity: 0.8;
+  }
+}
+
+.text {
+  margin-bottom: 10px !important;
+}
+
+.replyBtn {
+  font-size: 14px;
+  margin-right: 5px;
+  cursor: pointer;
+
+  &:hover {
+    color: #346eb8;
+  }
+}

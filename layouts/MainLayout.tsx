@@ -13,12 +13,14 @@ interface MainLayoutProps {
   children?: any;
   hideComments?: boolean;
   contentFullWidth?: boolean;
+  className?: string;
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({
   children,
   contentFullWidth,
   hideComments,
+  className,
 }) => {
   return (
     <div>
@@ -40,7 +42,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div className="wrapper">
+      <div className={clsx('wrapper', className)}>
         <div className="leftSide">
           <LeftMenu />
         </div>
