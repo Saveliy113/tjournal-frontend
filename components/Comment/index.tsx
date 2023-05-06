@@ -19,6 +19,7 @@ import styles from './Comment.module.scss';
 interface CommentPostProps {
   user: {
     fullname: string;
+    avatarUrl: string;
   };
   text: string;
   createdAt: string;
@@ -46,7 +47,7 @@ export const Comment: React.FC<CommentPostProps> = ({
           {user.fullname[0]}
         </Avatar>
         <b>{user.fullname}</b>
-        <span>{createdAt}</span>
+        {/* <span>{createdAt}</span> */}
       </div>
       <Typography className={styles.text}>{text}</Typography>
       <span className={styles.replyBtn}>Ответить</span>

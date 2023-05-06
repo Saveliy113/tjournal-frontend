@@ -1,11 +1,12 @@
 //REACT
-import React from 'react';
+import React, { useState } from 'react';
 
 //COMPONENTS
 import { Divider, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 import { Comment } from '../Comment';
+import { AddCommentForm } from '../AddCommentForm';
 
-type Comment = {
+type CommentObj = {
   id: number;
   text: string;
   createdAt: string;
@@ -16,35 +17,40 @@ type Comment = {
 };
 
 interface PostCommentsProps {
-  items: Comment[];
+  items: CommentObj[];
 }
 
 export const PostComments: React.FC<PostCommentsProps> = ({ items }) => {
+  const [activeTab, setActiveTab] = useState<number>(0);
+
   return (
     <Paper elevation={0} className="mt-40 p-30">
-      <Typography variant="h6" className="mb-20">
-        42 комментария
-      </Typography>
-      <Tabs
-        className="mt-20"
-        value={0}
-        indicatorColor="primary"
-        textColor="primary"
-      >
-        <Tab label="Популярные" />
-        <Tab label="По порядку" />
-      </Tabs>
-      <Divider />
-
-      <div className="mb-20 mt-20">
-        {items.map((obj) => (
-          <Comment
-            key={obj.id}
-            user={obj.user}
-            text={obj.text}
-            createdAt={obj.createdAt}
-          />
-        ))}
+      <div className="container">
+        <Typography variant="h6" className="mb-20">
+          42 комментария
+        </Typography>
+        <Tabs
+          onChange={(_, newValue) => setActiveTab(newValue)}
+          value={activeTab}
+          className="mt-20"
+          indicatorColor="primary"
+          textColor="primary"
+        >
+          <Tab label="Популярные" />
+          <Tab label="По порядку" />
+        </Tabs>
+        <Divider />
+        <AddCommentForm />
+        <div className="mb-20 mt-20">
+          {items.map((obj) => (
+            <Comment
+              key={obj.id}
+              user={obj.user}
+              text={obj.text}
+              createdAt={obj.createdAt}
+            />
+          ))}
+        </div>
       </div>
     </Paper>
   );
