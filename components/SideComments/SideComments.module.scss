@@ -2,8 +2,18 @@
   max-width: 300px;
   margin-left: 40px;
   position: sticky;
-  top: 80px;
+  top: 90px;
   right: 15px;
+}
+
+.rotated {
+  width: 100px;
+  transform: rotate(-90deg) translateX(-50px);
+  transform-origin: right;
+
+  svg {
+    transform: rotate(270deg);
+  }
 }
 
 .commentsTitle {
@@ -11,6 +21,7 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .commentsTitle h2 {

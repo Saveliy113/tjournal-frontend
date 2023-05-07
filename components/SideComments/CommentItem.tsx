@@ -1,5 +1,5 @@
 //REACT
-import React from 'react';
+import React, { useState } from 'react';
 
 //COMPONENTS
 import { Avatar } from '@material-ui/core';
@@ -8,7 +8,22 @@ import Link from 'next/link';
 //CSS
 import styles from './SideComments.module.scss';
 
-export const CommentItem: React.FC = () => {
+interface CommentItemProps {
+  user: {
+    fullname: string;
+  };
+  text: string;
+  post: {
+    title: string;
+  };
+}
+
+export const CommentItem: React.FC<CommentItemProps> = ({
+  user,
+  text,
+  post,
+}) => {
+
   return (
     <div className={styles.commentItem}>
       <div className={styles.commentAuthor}>
@@ -17,19 +32,16 @@ export const CommentItem: React.FC = () => {
           className="mr-10"
           alt="Remy Sharp"
         >
-          R
+          {user.fullname[0]}
         </Avatar>
         <Link href="/profile/1">
-          <b>Remy Sharp</b>
+          <b>{user.fullname}</b>
         </Link>
       </div>
-      <p>
-        Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать
-        еще на часок. Ну и...
-      </p>
+      <p>{text}</p>
 
       <Link href="#">
-        <span className={styles.postTitle}>Какая у вас дома ванна?</span>
+        <span className={styles.postTitle}>{post.title}</span>
       </Link>
     </div>
   );
