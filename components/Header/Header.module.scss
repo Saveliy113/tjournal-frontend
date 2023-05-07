@@ -53,3 +53,17 @@
     }
   }
 }
+
+.loginButton {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 15px;
+
+  &:hover {
+    color: lightsalmon;
+  }
+}

@@ -1,0 +1,50 @@
+.content {
+  width: 70%;
+  margin: 30px auto;
+  button {
+    position: relative;
+    svg {
+      position: absolute;
+      left: 10px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.title {
+  margin-bottom: 25px !important;
+  font-size: 18px;
+  font-weight: 500 !important;
+  color: black !important;
+}
+
+.miniButtons {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+
+  button {
+    height: 40px !important;
+    svg {
+      position: static;
+    }
+  }
+}
+
+.backTitle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    color: #4683d9;
+  }
+  svg {
+    position: relative;
+    top: -1px;
+    margin-right: 10px;
+  }
+}
+
+

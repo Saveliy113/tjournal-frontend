@@ -12,6 +12,11 @@ export const theme = createTheme({
         borderRadius: 8,
       },
     },
+    MuiDialog: {
+      paper: {
+        boxShadow: 'none',
+      },
+    },
     MuiButton: {
       root: {
         borderRadius: '8px',

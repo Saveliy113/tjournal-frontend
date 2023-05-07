@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 
+//DATA
+import data from '../../data.js';
+
 //COMPONENTS
 import { CommentItem } from './CommentItem';
 
@@ -11,7 +14,6 @@ import { ChevronRightOutlined as ArrowRight } from '@material-ui/icons';
 //CSS
 import styles from './SideComments.module.scss';
 
-import data from '../../data.js';
 export const SideComments: React.FC = () => {
   const [visible, setVisible] = useState(true);
 
