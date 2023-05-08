@@ -15,7 +15,7 @@ interface EmailProps {
 export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
   const form = useForm({
     resolver: yupResolver(LoginFormSchema),
-    mode: 'onSubmit',
+    mode: 'onChange',
   });
 
   const onSubmit = (data) => console.log(data);
@@ -27,7 +27,12 @@ export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
         <FormField label="Пароль" name="password" />
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="d-flex align-center justify-between">
-            <Button type="submit" color="primary" variant="contained">
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              disabled={!form.formState.isValid}
+            >
               Войти
             </Button>
             <Button onClick={onOpenRegisterForm} color="primary" variant="text">

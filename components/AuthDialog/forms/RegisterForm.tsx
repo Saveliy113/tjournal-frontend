@@ -15,7 +15,7 @@ interface RegisterFormProps {
 export const RegisterForm: React.FC<RegisterFormProps> = ({ onOpenLogin }) => {
   const form = useForm({
     resolver: yupResolver(RegisterFormSchema),
-    mode: 'onSubmit',
+    mode: 'onChange',
   });
 
   const onSubmit = (data) => console.log(data);
@@ -28,7 +28,12 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onOpenLogin }) => {
         <FormField label="Пароль" name="password" />
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="d-flex align-center justify-between">
-            <Button type="submit" color="primary" variant="contained">
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              disabled={!form.formState.isValid}
+            >
               Зарегистрироваться
             </Button>
             <Button onClick={onOpenLogin} color="primary" variant="text">
