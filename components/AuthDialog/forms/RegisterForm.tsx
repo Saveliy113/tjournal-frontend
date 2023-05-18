@@ -3,10 +3,13 @@ import React from 'react';
 import { RegisterFormSchema } from '@/utils/validations';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { setCookie } from 'nookies';
 
 //COMPONENTS
-import { Button, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { FormField } from '@/components/FormField';
+import { UserApi } from '@/utils/api';
+import { CreateUserDto } from '@/utils/api/types';
 
 interface RegisterFormProps {
   onOpenLogin: () => void;
@@ -18,21 +21,33 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onOpenLogin }) => {
     mode: 'onChange',
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (dto: CreateUserDto) => {
+    try {
+      const data = await UserApi.register(dto);
+      console.log(data);
+      setCookie(null, '_token', data.token, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: '/',
+      });
+    } catch (error) {
+      alert('Ошибка при регистрации');
+      console.warn('Register Error', error);
+    }
+  };
 
   return (
     <div>
       <FormProvider {...form}>
-        <FormField label="Имя и фамилия" name="fullname" />
-        <FormField label="Логин" name="email" />
-        <FormField label="Пароль" name="password" />
+        <FormField name="fullName" label="Имя и фамилия" />
+        <FormField name="email" label="Логин" />
+        <FormField name="password" label="Пароль" />
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="d-flex align-center justify-between">
             <Button
               type="submit"
               color="primary"
               variant="contained"
-              disabled={!form.formState.isValid}
+              disabled={!form.formState.isValid || form.formState.isSubmitting}
             >
               Зарегистрироваться
             </Button>

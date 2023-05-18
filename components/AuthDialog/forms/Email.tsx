@@ -7,6 +7,9 @@ import { LoginFormSchema } from '@/utils/validations';
 //COMPONENTS
 import { Button, TextField } from '@material-ui/core';
 import { FormField } from '@/components/FormField';
+import { UserApi } from '@/utils/api';
+import { LoginDto } from '@/utils/api/types';
+import { setCookie } from 'nookies';
 
 interface EmailProps {
   onOpenRegisterForm: () => void;
@@ -18,7 +21,19 @@ export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
     mode: 'onChange',
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (dto: LoginDto) => {
+    try {
+      const data = await UserApi.login(dto);
+      console.log(data);
+      setCookie(null, '_token', data.token, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: '/',
+      });
+    } catch (error) {
+      alert('Ошибка при регистрации');
+      console.warn('Register Error', error);
+    }
+  };
 
   return (
     <div>
@@ -31,7 +46,7 @@ export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
               type="submit"
               color="primary"
               variant="contained"
-              disabled={!form.formState.isValid}
+              disabled={!form.formState.isValid || form.formState.isSubmitting}
             >
               Войти
             </Button>
