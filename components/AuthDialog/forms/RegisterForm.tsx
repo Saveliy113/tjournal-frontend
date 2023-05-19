@@ -4,6 +4,8 @@ import { RegisterFormSchema } from '@/utils/validations';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { setCookie } from 'nookies';
+import { useAppDispatch } from '@/redux/hooks';
+import { setUserData } from '@/redux/slices/user';
 
 //COMPONENTS
 import { Button } from '@material-ui/core';
@@ -17,6 +19,8 @@ interface RegisterFormProps {
 }
 
 export const RegisterForm: React.FC<RegisterFormProps> = ({ onOpenLogin }) => {
+  const dispatch = useAppDispatch();
+
   const [errorMessage, setErrorMessage] = useState('');
 
   const form = useForm({
@@ -32,6 +36,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onOpenLogin }) => {
         path: '/',
       });
       setErrorMessage('');
+      dispatch(setUserData(data));
     } catch (error: any) {
       console.warn('Register Error', error);
       if (error.response) {

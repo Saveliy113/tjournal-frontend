@@ -11,12 +11,15 @@ import { FormField } from '@/components/FormField';
 import { UserApi } from '@/utils/api';
 import { LoginDto } from '@/utils/api/types';
 import { Alert } from '@material-ui/lab';
+import { useAppDispatch } from '@/redux/hooks';
+import { setUserData } from '@/redux/slices/user';
 
 interface EmailProps {
   onOpenRegisterForm: () => void;
 }
 
 export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
+  const dispatch = useAppDispatch();
   const [errorMessage, setErrorMessage] = useState('');
 
   const form = useForm({
@@ -32,6 +35,7 @@ export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
         path: '/',
       });
       setErrorMessage('');
+      dispatch(setUserData(data));
     } catch (error: any) {
       console.warn('Register Error', error);
       if (error.response) {
