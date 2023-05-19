@@ -1,21 +1,24 @@
 //REACT
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginFormSchema } from '@/utils/validations';
+import { setCookie } from 'nookies';
 
 //COMPONENTS
-import { Button, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { FormField } from '@/components/FormField';
 import { UserApi } from '@/utils/api';
 import { LoginDto } from '@/utils/api/types';
-import { setCookie } from 'nookies';
+import { Alert } from '@material-ui/lab';
 
 interface EmailProps {
   onOpenRegisterForm: () => void;
 }
 
 export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
+  const [errorMessage, setErrorMessage] = useState('');
+
   const form = useForm({
     resolver: yupResolver(LoginFormSchema),
     mode: 'onChange',
@@ -24,14 +27,16 @@ export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
   const onSubmit = async (dto: LoginDto) => {
     try {
       const data = await UserApi.login(dto);
-      console.log(data);
       setCookie(null, '_token', data.token, {
         maxAge: 30 * 24 * 60 * 60,
         path: '/',
       });
-    } catch (error) {
-      alert('Ошибка при регистрации');
+      setErrorMessage('');
+    } catch (error: any) {
       console.warn('Register Error', error);
+      if (error.response) {
+        setErrorMessage(error.response.data.message);
+      }
     }
   };
 
@@ -40,6 +45,13 @@ export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
       <FormProvider {...form}>
         <FormField label="Почта" name="email" />
         <FormField label="Пароль" name="password" />
+
+        {errorMessage && (
+          <Alert className="mb-20" severity="error">
+            {errorMessage}
+          </Alert>
+        )}
+
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="d-flex align-center justify-between">
             <Button

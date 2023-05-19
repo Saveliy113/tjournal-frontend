@@ -1,5 +1,5 @@
 //REACT
-import React from 'react';
+import React, { useState } from 'react';
 import { RegisterFormSchema } from '@/utils/validations';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,12 +10,15 @@ import { Button } from '@material-ui/core';
 import { FormField } from '@/components/FormField';
 import { UserApi } from '@/utils/api';
 import { CreateUserDto } from '@/utils/api/types';
+import { Alert } from '@material-ui/lab';
 
 interface RegisterFormProps {
   onOpenLogin: () => void;
 }
 
 export const RegisterForm: React.FC<RegisterFormProps> = ({ onOpenLogin }) => {
+  const [errorMessage, setErrorMessage] = useState('');
+
   const form = useForm({
     resolver: yupResolver(RegisterFormSchema),
     mode: 'onChange',
@@ -24,14 +27,16 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onOpenLogin }) => {
   const onSubmit = async (dto: CreateUserDto) => {
     try {
       const data = await UserApi.register(dto);
-      console.log(data);
       setCookie(null, '_token', data.token, {
         maxAge: 30 * 24 * 60 * 60,
         path: '/',
       });
-    } catch (error) {
-      alert('Ошибка при регистрации');
+      setErrorMessage('');
+    } catch (error: any) {
       console.warn('Register Error', error);
+      if (error.response) {
+        setErrorMessage(error.response.data.message);
+      }
     }
   };
 
@@ -41,6 +46,13 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onOpenLogin }) => {
         <FormField name="fullName" label="Имя и фамилия" />
         <FormField name="email" label="Логин" />
         <FormField name="password" label="Пароль" />
+
+        {errorMessage && (
+          <Alert className="mb-20" severity="error">
+            {errorMessage}
+          </Alert>
+        )}
+
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="d-flex align-center justify-between">
             <Button
