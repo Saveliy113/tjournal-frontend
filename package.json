@@ -22,6 +22,7 @@
     "clsx": "^1.2.1",
     "macro-css": "^1.0.5",
     "next": "13.3.0",
+    "next-redux-wrapper": "^8.1.0",
     "nookies": "^2.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",

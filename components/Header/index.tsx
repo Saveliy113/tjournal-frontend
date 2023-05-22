@@ -22,7 +22,7 @@ import styles from './Header.module.scss';
 import { useAppSelector } from '@/redux/hooks';
 
 export const Header: React.FC = () => {
-  const userData = useAppSelector(selectUserData);
+  const userData = useAppSelector((store) => store.user.data);
 
   /* INITIAL STATE AND OPENING FUNCTIONS FOR AUTH DIALOG*/
   const [open, setOpen] = React.useState(false);
