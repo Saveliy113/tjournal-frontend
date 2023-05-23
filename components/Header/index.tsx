@@ -1,5 +1,5 @@
 //REACT
-import React from 'react';
+import React, { useEffect } from 'react';
 import { selectUserData } from '@/redux/slices/user';
 
 //COMPONENTS
@@ -35,6 +35,12 @@ export const Header: React.FC = () => {
     setOpen(false);
   };
   //--------------------------------------------------
+
+  useEffect(() => {
+    if (open && userData) {
+      setOpen(false);
+    }
+  }, [open, userData]);
 
   return (
     <Paper classes={{ root: styles.root }} elevation={0}>

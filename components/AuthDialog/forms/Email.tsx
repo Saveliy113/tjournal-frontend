@@ -8,11 +8,12 @@ import { setCookie } from 'nookies';
 //COMPONENTS
 import { Button } from '@material-ui/core';
 import { FormField } from '@/components/FormField';
-import { UserApi } from '@/utils/api';
+import { UserApi } from '@/utils/api/user';
 import { LoginDto } from '@/utils/api/types';
 import { Alert } from '@material-ui/lab';
 import { useAppDispatch } from '@/redux/hooks';
 import { setUserData } from '@/redux/slices/user';
+import { Api } from '@/utils/api';
 
 interface EmailProps {
   onOpenRegisterForm: () => void;
@@ -29,7 +30,7 @@ export const Email: React.FC<EmailProps> = ({ onOpenRegisterForm }) => {
 
   const onSubmit = async (dto: LoginDto) => {
     try {
-      const data = await UserApi.login(dto);
+      const data = await Api().user.login(dto);
       setCookie(null, '_token', data.token, {
         maxAge: 30 * 24 * 60 * 60,
         path: '/',

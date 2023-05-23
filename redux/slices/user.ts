@@ -22,7 +22,6 @@ export const userSlice = createSlice({
 
   extraReducers: {
     [HYDRATE]: (state, action) => {
-      // state.data = action.payload.user.data;
       return {
         ...state,
         ...action.payload.user,

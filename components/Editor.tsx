@@ -1,25 +1,32 @@
 //REACT
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 
 //COMPONENTS
-import EditorJS from '@editorjs/editorjs';
+import EditorJS, { OutputData } from '@editorjs/editorjs';
 
-export const Editor: React.FC = () => {
-  const ref = useRef<null | EditorJS>(null);
+interface EditorProps {
+  onChange: (blocks: OutputData['blocks']) => void;
+}
+
+export const Editor: React.FC<EditorProps> = ({ onChange }) => {
   useEffect(() => {
-    if (!ref.current?.isReady) {
-      ref.current = new EditorJS({
-        holder: 'editorjs',
-        placeholder: 'Введите текст вашей статьи',
-      });
-    }
+    const editor = new EditorJS({
+      holder: 'editorjs',
+      placeholder: 'Введите текст вашей статьи',
+      async onChange() {
+        const { blocks } = await editor.save();
+        onChange(blocks);
+      },
+    });
 
     return () => {
-      if (ref.current && ref.current.destroy) {
-        ref.current.destroy();
-      }
+      editor.isReady
+        .then(() => {
+          editor.destroy();
+        })
+        .catch((error) => console.error('Error editor cleanup', error));
     };
   }, []);
 
-  return <div id="editorjs" ref={ref} />;
+  return <div id="editorjs" />;
 };

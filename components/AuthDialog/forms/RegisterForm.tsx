@@ -10,7 +10,7 @@ import { setUserData } from '@/redux/slices/user';
 //COMPONENTS
 import { Button } from '@material-ui/core';
 import { FormField } from '@/components/FormField';
-import { UserApi } from '@/utils/api';
+import { UserApi } from '@/utils/api/user';
 import { CreateUserDto } from '@/utils/api/types';
 import { Alert } from '@material-ui/lab';
 
