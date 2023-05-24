@@ -6,9 +6,10 @@ import EditorJS, { OutputData } from '@editorjs/editorjs';
 
 interface EditorProps {
   onChange: (blocks: OutputData['blocks']) => void;
+  initialBlocks: OutputData['blocks'] | undefined;
 }
 
-export const Editor: React.FC<EditorProps> = ({ onChange }) => {
+export const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks }) => {
   useEffect(() => {
     const editor = new EditorJS({
       holder: 'editorjs',
@@ -16,6 +17,9 @@ export const Editor: React.FC<EditorProps> = ({ onChange }) => {
       async onChange() {
         const { blocks } = await editor.save();
         onChange(blocks);
+      },
+      data: {
+        blocks: initialBlocks,
       },
     });
 

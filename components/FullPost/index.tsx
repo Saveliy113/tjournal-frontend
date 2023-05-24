@@ -14,42 +14,27 @@ import {
 
 //CSS
 import styles from './FullPost.module.scss';
+import { OutputData } from '@editorjs/editorjs';
 
-export const FullPost = () => {
+interface FullPostProps {
+  title: string;
+  blocks: OutputData['blocks'];
+}
+
+export const FullPost: React.FC<FullPostProps> = ({ title, blocks }) => {
   return (
     <Paper elevation={0} className={styles.paper}>
       <div className="container">
         <Typography variant="h4" className={styles.title}>
-          Superjet, летящий из Волгограда в Москву, подал сигнал бедствия.
-          Возможно, в полете произошла разгерметизация.
+          {title}
         </Typography>
-        <div>
-          <Typography>
-            Самолет, летящий из Волгограда в Москву, подал сигнал бедствия. Об
-            этом сообщает "Интерфакс" со ссылкой на информированный источник.
-          </Typography>
-
-          <Typography>
-            По данным источника, самолет резко снизился над Тамбовской областью.
-            Возможной причиной этого собеседник агенства назвал разгерметизацию.
-          </Typography>
-
-          <Typography>
-            Самолет продолжает полет на высоте примерно 3000 метров.
-          </Typography>
-
-          <Typography>
-            Источник не уточнил названия авиакомпании и номера рейса. Судя по
-            данным Flightradar24, сейчас в небе находится один SSJ1000, летящий
-            в Москву из Волгограда. Это - самолет "Аэрофлота", выполняющий рейс
-            SU6416. На момент написания заметки он уже пересек Тамбовскую
-            область и пролетает к Москве.
-          </Typography>
-
-          <Typography>
-            Самолет совершил посадку в Шереметьево в 14:28 по Московскому
-            времени.
-          </Typography>
+        <div className={styles.postText}>
+          {blocks.map((obj) => (
+            <Typography
+              key={obj.id}
+              dangerouslySetInnerHTML={{ __html: obj.data.text }}
+            />
+          ))}
 
           <div style={{ width: 250, marginLeft: -14 }}>
             <PostActions />
